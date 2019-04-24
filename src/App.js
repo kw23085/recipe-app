@@ -12,10 +12,11 @@ class App extends Component {
     recipes: []  
   }
   
+  // Get recipe A
   getRecipe = async (e) => {
     const recipeNmae = e.target.elements.recipeName.value
     e.preventDefault();
-    const api_call = await fetch(`http://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken&page=2`);
+    const api_call = await fetch(`http://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=${API_KEY}&q=${recipeNmae}&page=2`);
     
     const data = await api_call.json();
     this.setState({ recipes: data.recipes });

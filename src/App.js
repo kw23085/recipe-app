@@ -12,7 +12,7 @@ class App extends Component {
     recipes: []  
   }
   
-  // Get recipe A
+  // Get recipe from API
   getRecipe = async (e) => {
     const recipeNmae = e.target.elements.recipeName.value
     e.preventDefault();
@@ -30,7 +30,13 @@ class App extends Component {
         </header>
         <Form getRecipe={this.getRecipe} />
         { this.state.recipes.map((recipe) => {
-          return <p key={recipe.recipe_id}>{ recipe.title }</p>
+          return (
+            
+            <div key={recipe.recipe_id}>
+              <img src={recipe.image_url} alt={recipe.title} />
+              <p>{ recipe.title }</p>
+            </div>
+          );
         }) }
       </div>
     );
